@@ -23,6 +23,15 @@ const addTask = () => {
   }
 };
 
+const taskInput = document.getElementById("taskInput");
+
+taskInput.addEventListener("keyup", function (event) {
+  if (event.key === "Enter") {
+    addTask();
+  }
+});
+ 
+
 const removeTask = (btn) => {
   const li = btn.parentNode;
   const confirmationModal = document.getElementById("confirmationModal");
@@ -30,7 +39,7 @@ const removeTask = (btn) => {
   const cancelDeleteBtn = document.getElementById("cancelDelete");
 
   confirmationModal.style.display = "flex";
-  
+
   confirmDeleteBtn.onclick = () => {
     li.parentNode.removeChild(li);
     confirmationModal.style.display = "none";
@@ -40,7 +49,6 @@ const removeTask = (btn) => {
     confirmationModal.style.display = "none";
   };
 };
-
 
 const editTaskIcon = (btn) => {
   const li = btn.parentNode;
@@ -90,5 +98,3 @@ const getRandomTextColor = (bgColor) => {
   const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
   return luminance > 128 ? "#1a1a1a" : "#ffffff";
 };
-
-
